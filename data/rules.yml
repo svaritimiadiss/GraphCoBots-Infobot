@@ -1,0 +1,82 @@
+#version: "3.2.10"
+
+rules:
+- rule: trigger zoi_kai_ergo_transference
+  steps:
+    - intent: zoi_kai_ergo_transference
+    - action: action_set_reminder
+    - action: utter_zoi_kai_ergo_transference
+
+- rule: trigger_exhibition_bot_transferences
+  steps:
+    - intent: exhibition_bot_transference
+    - action: action_set_reminder
+    - action: utter_exhibition_bot_transference
+
+- rule: explain I am trained only on greek questions
+  steps:
+  - intent: non_greek_language
+  - action: action_set_reminder
+  - action: utter_non_greek_language
+
+#- rule: respond to FAQs
+#  steps:
+#  - intent: faq
+#  - action: action_set_reminder
+#  - action: utter_faq
+
+- rule: react to reminder
+  steps:
+  - intent: EXTERNAL_reminder
+  - action: action_react_to_reminder
+
+- rule: Greet user with his/her name
+#  conversation_start: true
+  steps:
+  - intent: my_name
+  - action: action_set_reminder
+  - action: action_create_greet_carousels
+
+- rule: Greet user with his/her name using MULTI-INTENTS greet+my_name
+#  conversation_start: true
+  steps:
+  - intent: greet+my_name
+  - action: action_set_reminder
+  - action: action_create_greet_carousels
+
+# # Ο λόγος που επιλέχτηκε το Carousel είναι γιατί σε κανονικά buttons ΔΕΝ μπορεί το rasa να βάλει URL μέσα
+- rule: Social Media options for the Museum with carousels
+  steps:
+  - intent: socialmedia
+  - action: action_set_reminder
+  - action: action_create_socialmedia_buttons
+
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: action_set_reminder
+  - action: action_default_fallback
+
+# ΔΕΝ θελουμε reminder στο goodbye προφανώς αφού το αποχαιρετάμε.
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: action_goodbye
+
+- rule: Say 'I am a bot' in Greek anytime the user challenges
+  steps:
+  - intent: bot_challenge_el
+  - action: action_set_reminder
+  - action: utter_iamabot_el
+
+- rule: Ερώτηση για ιδρυτή Ανεμογιάννη
+  steps:
+  - intent: founder
+  - action: action_set_reminder
+  - action: utter_founder
+
+- rule: Ερώτηση για κόστη υπηρεσιών (ξενάγησεις, κλπ)
+  steps:
+  - intent: services
+  - action: action_set_reminder
+  - action: utter_services

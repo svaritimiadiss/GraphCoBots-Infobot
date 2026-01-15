@@ -1,0 +1,319 @@
+#version: "3.2.10"
+
+stories:
+- story: greet conversation start
+  steps:
+  - intent: welcome
+  - action: action_set_reminder
+  - action: utter_welcome
+
+- story: Say goodbye when affirm
+  steps:
+  - intent: compliment
+  - action: utter_compliment
+  - intent: affirm
+  - action: action_set_reminder
+  - action: action_create_deny_carousels
+
+# ΔΕΝ θελουμε reminder στο goodbye προφανώς αφού το αποχαιρετάμε.
+- story: Say goodbye when deny
+  steps:
+  - intent: compliment
+  - action: utter_compliment
+  - intent: deny
+  - action: action_goodbye
+
+- story: θέλω να μάθω για το confidence level του chatbot
+  steps:
+  - intent: confidence
+  - action: action_set_reminder
+  - action: action_get_confidence
+
+- story: θέλω να μάθω για τον ιδρυτή μετά από πότε ιδρύθηκε το μουσείο
+  steps:
+    - intent: establishment
+    - action: utter_establishment
+    - intent: affirm
+    - action: action_set_reminder
+    - action: utter_founder
+
+- story: ΔΕΝ θέλω να μάθω για τον ιδρυτή μετά από πότε ιδρύθηκε το μουσείο
+  steps:
+    - intent: establishment
+    - action: utter_establishment
+    - intent: deny
+    - action: action_set_reminder
+    - action: action_create_deny_carousels
+
+- story: Θέλω να μάθω κόστος ξενάγησης μετά από πληροφορίες ξενάγησης
+  steps:
+    - intent: tour
+    - action: utter_tour
+    - intent: affirm
+    - action: action_set_reminder
+    - action: utter_services
+
+- story: ΔΕΝ Θέλω να μάθω κόστος ξενάγησης μετά από πληροφορίες ξενάγησης
+  steps:
+    - intent: tour
+    - action: utter_tour
+    - intent: deny
+    - action: action_set_reminder
+    - action: action_create_deny_carousels
+
+- story: ask weather with weatherapi.com
+  steps:
+    - intent: weather
+    - action: action_set_reminder
+    - action: action_get_weather
+
+- story: education
+  steps:
+  - intent: education
+  - action: action_set_reminder
+  - action: utter_education
+
+- story: greet conversation start
+  steps:
+  - intent: reason
+  - action: action_set_reminder
+  - action: utter_reason
+  - action: action_initial_carousels
+
+- story: free_entrance
+  steps:
+  - intent: free_entrance
+  - action: action_set_reminder
+  - action: utter_free_entrance
+
+- story: school_visits
+  steps:
+  - intent: school_visits
+  - action: action_set_reminder
+  - action: utter_school_visits
+
+- story: greet conversation start
+  steps:
+  - intent: welcome
+  - action: action_set_reminder
+  - action: utter_welcome
+
+- story: reduced_ticket
+  steps:
+  - intent: reduced_ticket
+  - action: action_set_reminder
+  - action: utter_reduced_ticket
+
+- story: goal
+  steps:
+  - intent: goal
+  - action: action_set_reminder
+  - action: utter_goal
+
+- story: audioguide
+  steps:
+  - intent: audioguide
+  - action: action_set_reminder
+  - action: utter_audioguide
+
+- story: disabledaccess
+  steps:
+  - intent: disabledaccess
+  - action: action_set_reminder
+  - action: utter_disabledaccess
+
+- story: announcements
+  steps:
+  - intent: announcements
+  - action: action_set_reminder
+  - action: utter_announcements
+
+- story: buildingcomplex
+  steps:
+  - intent: buildingcomplex
+  - action: action_set_reminder
+  - action: utter_buildingcomplex
+
+- story: cafe
+  steps:
+  - intent: cafe
+  - action: action_set_reminder
+  - action: utter_cafe
+
+- story: eshop
+  steps:
+  - intent: eshop
+  - action: action_set_reminder
+  - action: utter_eshop
+
+- story: visit_time
+  steps:
+  - intent: visit_time
+  - action: action_set_reminder
+  - action: utter_visit_time
+
+- story: events
+  steps:
+  - intent: events
+  - action: action_set_reminder
+  - action: utter_events
+
+- story: pets
+  steps:
+  - intent: pets
+  - action: action_set_reminder
+  - action: utter_pets
+
+- story: toilets
+  steps:
+  - intent: toilets
+  - action: action_set_reminder
+  - action: utter_toilets
+
+- story: Myrtia
+  steps:
+  - intent: Myrtia
+  - action: action_set_reminder
+  - action: utter_Myrtia
+
+- story: digitalmedia
+  steps:
+  - intent: digitalmedia
+  - action: action_set_reminder
+  - action: utter_digitalmedia
+
+- story: publications
+  steps:
+  - intent: publications
+  - action: action_set_reminder
+  - action: utter_publications
+
+- story: virtualtour
+  steps:
+  - intent: virtualtour
+  - action: action_set_reminder
+  - action: utter_virtualtour
+
+- story: general_questions_archive + nikoskazantzakisarchive
+  steps:
+  - intent: general_questions_archive
+  - action: action_set_reminder
+  - action: utter_general_questions_archive
+  - intent: nikoskazantzakisarchive
+  - action: action_set_reminder
+  - action: utter_nikoskazantzakisarchive
+
+- story: general_questions_archive + giorgosanemogiannisarchive
+  steps:
+  - intent: general_questions_archive
+  - action: action_set_reminder
+  - action: utter_general_questions_archive
+  - intent: giorgosanemogiannisarchive
+  - action: action_set_reminder
+  - action: utter_giorgosanemogiannisarchive
+
+- story: nikoskazantzakisarchive
+  steps:
+  - intent: nikoskazantzakisarchive
+  - action: action_set_reminder
+  - action: utter_nikoskazantzakisarchive
+
+- story: giorgosanemogiannisarchive
+  steps:
+  - intent: giorgosanemogiannisarchive
+  - action: action_set_reminder
+  - action: utter_giorgosanemogiannisarchive
+
+- story: location
+  steps:
+  - intent: location
+  - action: action_set_reminder
+  - action: utter_location
+
+- story: access
+  steps:
+  - intent: access
+  - action: action_set_reminder
+  - action: utter_access
+
+- story: cost
+  steps:
+  - intent: cost
+  - action: action_set_reminder
+  - action: utter_cost
+
+- story: timetable
+  steps:
+  - intent: timetable
+  - action: action_set_reminder
+  - action: utter_timetable
+
+- story: contactinfo
+  steps:
+  - intent: contactinfo
+  - action: action_set_reminder
+  - action: utter_contactinfo
+
+- story: swearing
+  steps:
+  - intent: swearing
+  - action: action_set_reminder
+  - action: utter_swearing
+
+- story: project
+  steps:
+  - intent: project
+  - action: action_set_reminder
+  - action: utter_project
+
+- story: users_policy
+  steps:
+  - intent: users_policy
+  - action: action_set_reminder
+  - action: utter_users_policy
+
+- story: international day
+  steps:
+  - intent: international_day
+  - action: action_set_reminder
+  - action: utter_international_day
+
+- story: group ticket
+  steps:
+  - intent: group_ticket
+  - action: action_set_reminder
+  - action: utter_group_ticket
+
+
+
+#- story: need help with general question
+#  steps:
+#  - intent: ask_more_details
+#  - action: utter_ask_more_details
+
+#- story: happy path
+#  steps:
+#  - intent: mood_great
+#  - action: action_set_reminder
+#  - action: utter_happy
+#  - action: action_set_reminder
+# ΔΕΝ χρειάζεται να βάλουμε goodbye γιατί είναι στα rules!
+
+#- story: sad path 1
+#  steps:
+#  - intent: mood_unhappy
+#  - action: action_set_reminder
+#  - action: utter_cheer_up
+#  - action: utter_did_that_help
+#  - intent: affirm
+#  - action: action_set_reminder
+#  - action: utter_happy
+#
+#- story: sad path 2
+#  steps:
+#  - intent: mood_unhappy
+#  - action: action_set_reminder
+#  - action: utter_cheer_up
+#  - action: utter_did_that_help
+#  - intent: deny
+#  - action: action_set_reminder

@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  infobot-core-server:
+    container_name: infobot-core-server
+    restart: always # Na to svisw an dw oti mpainei se loopα me restarts
+    build:
+      context: . # Δηλαδή κάνει build το Dockerfile.ollama
+    ports:
+      - '5005:5005'
+    expose:
+      - '5005'
+
+  infobot-actions-server:
+    container_name: infobot-actions-server
+    restart: always # Na to svisw an dw oti mpainei se loopα me restarts
+    build:
+      context: actions # Δηλαδή κάνει build το Dockerfile.ollama
+    ports:
+      - '5055:5055'
+    expose:
+      - '5055'
+
+#
+#  duckling-server:
+#    container_name: duckling-server
+#    restart: always # Na to svisw an dw oti mpainei se loopα me restarts
+#    build:
+#      context: duckling # Δηλαδή κάνει build το Dockerfile.ollama
+#    ports:
+#      - '8000:8000'
+#    expose:
+#      - '8000'
